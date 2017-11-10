@@ -1,1 +1,3 @@
-# free-deliver
+# Free Deliver
+
+Prototype of a start-up idea
