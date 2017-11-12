@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import Map from './components/Map';
+
+import './assets/css/styles.css';
+
 ReactDOM.render(
   <App />,
   document.getElementById('app')
