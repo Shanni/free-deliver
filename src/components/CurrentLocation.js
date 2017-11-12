@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class CurrentLocation extends React.Component{
 
-	toggleFavorite(){
+	toggleFavorite = () => {
 		this.props.onFavoriteToggle(this.props.address);
 	}
 

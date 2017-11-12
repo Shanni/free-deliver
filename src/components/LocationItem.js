@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default class LocationItem extends React.Component {
 
-	handleClick(){
+	handleClick = () => {
 		this.props.onClick(this.props.address);
 	}
 

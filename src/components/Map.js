@@ -27,6 +27,8 @@ export default class Map extends React.Component {
 
 		var map = new GMaps({
 			el: '#map',
+			// lat: -12.043333,
+   //  		lng: -77.028333
 			lat: this.props.lat,
 			lng: this.props.lng
 		});

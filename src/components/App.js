@@ -8,29 +8,29 @@ import LocationList from './LocationList';
 
 export default class App extends Component {
 
-	getInitialState(){
+	constructor(props) {
+    	super(props);
 
-		// Extract the favorite locations from local storage
+    	var favorites = [];
 
-		var favorites = [];
-
-		if(localStorage.favorites){
+    	if(localStorage.favorites){
 			favorites = JSON.parse(localStorage.favorites);
 		}
 
-		// Nobody would get mad if we center it on Paris by default
-
-		return {
-			favorites: favorites,
-			currentAddress: 'Paris, France',
+    	this.state = {
+    		// Extract the favorite locations from local storage
+      		favorites: favorites,
+      		currentAddress: 'Paris, France',
 			mapCoordinates: {
 				lat: 48.856614,
 				lng: 2.3522219
 			}
-		};
-	}
+    	};
+  	}
 
-	toggleFavorite(address){
+
+
+	toggleFavorite = (address) => {
 
 		if(this.isAddressInFavorites(address)){
 			this.removeFromFavorites(address);
@@ -41,7 +41,7 @@ export default class App extends Component {
 
 	}
 
-	addToFavorites(address){
+	addToFavorites = (address) => {
 
 		var favorites = this.state.favorites;
 
@@ -57,7 +57,7 @@ export default class App extends Component {
 		localStorage.favorites = JSON.stringify(favorites);
 	}
 
-	removeFromFavorites(address){
+	removeFromFavorites = (address) => {
 
 		var favorites = this.state.favorites;
 		var index = -1;
@@ -86,7 +86,7 @@ export default class App extends Component {
 
 	}
 
-	isAddressInFavorites(address){
+	isAddressInFavorites = (address) => {
 
 		var favorites = this.state.favorites;
 
@@ -101,7 +101,7 @@ export default class App extends Component {
 		return false;
 	}
 
-	searchForAddress(address){
+	searchForAddress = (address) => {
 		
 		var self = this;
 
@@ -132,12 +132,9 @@ export default class App extends Component {
 	render(){
 
 		return (
-
 			<div>
 				<h1>Your Google Maps Locations</h1>
-
 				<Search onSearch={this.searchForAddress} />
-
 				<Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng} />
 
 				<CurrentLocation address={this.state.currentAddress} 
@@ -146,7 +143,6 @@ export default class App extends Component {
 
 				<LocationList locations={this.state.favorites} activeLocationAddress={this.state.currentAddress} 
 					onClick={this.searchForAddress} />
-
 			</div>
 
 		);
